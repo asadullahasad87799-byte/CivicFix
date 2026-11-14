@@ -1,0 +1,19 @@
+# Ignore uploaded user photos in Git (keep folder structure via .gitkeep)
+uploads/issues/*
+!uploads/issues/.gitkeep
+uploads/resolutions/*
+!uploads/resolutions/.gitkeep
+
+# Python virtual environment and cache
+python/venv/
+python/__pycache__/
+*.pyc
+
+# Local environment secrets (if any)
+.env
+php/config.local.php
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.vscode/

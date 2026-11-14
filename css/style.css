@@ -1,0 +1,1011 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Noto+Serif+Devanagari:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --navy: #0a2540;
+  --navy-mid: #0a3560;
+  --blue: #1d4ed8;
+  --saffron: #f97316;
+  --green: #099668;
+  --amber: #d97706;
+  --red: #e11d48;
+  --critical: #dc2626;
+  --bg: #f1f5f9;
+  --text: #0f172a;
+  --muted: #475569;
+  --line: #cbd5e1;
+  --white: #ffffff;
+  --shadow: 0 8px 24px -4px rgba(10, 37, 64, 0.08);
+  --shadow-lg: 0 18px 36px -10px rgba(10, 37, 64, 0.16);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: font-size 0.15s ease;
+}
+
+body.high-contrast {
+  --bg: #000000;
+  --text: #ffffff;
+  --muted: #fde047;
+  --line: #fde047;
+}
+
+body.high-contrast .panel,
+body.high-contrast .stat,
+body.high-contrast .issue,
+body.high-contrast .official-masthead,
+body.high-contrast .gov-navbar {
+  background: #090d16 !important;
+  color: #ffffff !important;
+  border-color: #fde047 !important;
+}
+
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; border: 0; }
+.app { min-height: 100vh; }
+
+/* 1. Top Government Accessibility Strip */
+.tricolor {
+  height: 5px;
+  background: linear-gradient(90deg, #FF9933 0 33.33%, #FFFFFF 33.33% 66.66%, #138808 66.66% 100%);
+}
+
+.gov-strip {
+  background: #07192d;
+  color: #e2e8f0;
+  font-size: 11px;
+  padding: 6px clamp(14px, 3.5vw, 48px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gov-strip-left { display: flex; align-items: center; gap: 8px; }
+.gov-strip-left strong { color: #fde68a; letter-spacing: 0.3px; }
+.gov-strip-right { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+
+.acc-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 3px 7px;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.acc-btn:hover { background: rgba(255, 255, 255, 0.22); }
+
+.lang-switch {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 5px;
+  padding: 2px;
+  margin-left: 4px;
+}
+
+.lang-btn {
+  padding: 3px 8px;
+  font-size: 10.5px;
+  font-weight: 700;
+  border-radius: 4px;
+  background: transparent;
+  color: #e2e8f0;
+}
+
+.lang-btn.active { background: var(--saffron); color: #fff; }
+
+/* 2. Official Masthead with CivicFix Logo, Dandi March 1930 Strip & Symbol of Success */
+.official-masthead {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  padding: 12px clamp(14px, 3.5vw, 48px);
+  display: grid;
+  grid-template-columns: 1.15fr 1.25fr auto;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 2px solid #0a3560;
+}
+
+.masthead-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.main-logo-img {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  padding: 2px;
+  box-shadow: 0 4px 10px rgba(10, 53, 96, 0.1);
+}
+
+.gov-dept-tag {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--green);
+  text-transform: uppercase;
+}
+
+.masthead-title h1 {
+  font-family: 'Noto Serif Devanagari', Georgia, serif;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.2;
+  color: #0a3560;
+  margin: 2px 0;
+  font-weight: 800;
+}
+
+.masthead-title p {
+  margin: 0;
+  color: #475569;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+/* Thin Upper Strip with Dandi March 1930 Image */
+.dandi-strip-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(100deg, #0a2540 0%, #0a3560 60%, #095c47 100%);
+  color: #fff;
+  padding: 7px 14px 7px 8px;
+  border-radius: 8px;
+  border-left: 4px solid var(--saffron);
+  box-shadow: 0 4px 14px rgba(10, 37, 64, 0.14);
+}
+
+.dandi-strip-img {
+  width: 86px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  filter: grayscale(100%) contrast(112%) sepia(15%);
+  flex-shrink: 0;
+}
+
+.dandi-strip-text { line-height: 1.3; }
+
+.dandi-slogan {
+  font-family: 'Noto Serif Devanagari', Georgia, serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.dandi-slogan span { color: #fde68a; }
+
+.dandi-sub {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: #a7f3d0;
+  margin-top: 2px;
+}
+
+.dandi-strip-text small {
+  font-size: 10px;
+  color: #cbd5e1;
+}
+
+/* CivicFix Symbol of Success Seal */
+.success-symbol-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  border-radius: 8px;
+  padding: 7px 12px;
+}
+
+.seal-text { line-height: 1.3; }
+.seal-label { display: block; font-size: 9px; font-weight: 800; letter-spacing: 0.9px; color: #b45309; }
+.seal-text b { display: block; font-size: 13px; color: #065f46; }
+.seal-text small { font-size: 10.5px; color: #047857; font-weight: 700; }
+
+/* 3. Primary Government Navigation Bar */
+.gov-navbar {
+  background: #0a3560;
+  border-bottom: 3px solid var(--saffron);
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  box-shadow: 0 4px 16px rgba(10, 37, 64, 0.14);
+}
+
+.gov-nav-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 8px clamp(14px, 3vw, 36px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.nav-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.tab {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+  padding: 9px 15px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 12.5px;
+  transition: all 0.16s ease;
+}
+
+.tab:hover { background: rgba(255, 255, 255, 0.18); color: #fff; }
+
+.tab.active {
+  background: #ffffff;
+  color: #0a3560;
+  font-weight: 800;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+}
+
+.nav-right-actions { display: flex; align-items: center; gap: 8px; }
+
+.pill {
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 99px;
+  padding: 5px 11px;
+  background: rgba(16, 185, 129, 0.18);
+  color: #a7f3d0;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+/* Layout & Departmental Routing Strip */
+.layout { max-width: 1320px; margin: 0 auto; padding: 20px clamp(14px, 3vw, 36px) 48px; }
+
+.dept-routing-banner {
+  background: linear-gradient(90deg, #eff6ff 0%, #f0fdf4 100%);
+  border: 1px solid #bfdbfe;
+  border-left: 5px solid #0a3560;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 18px;
+}
+
+.dept-banner-head { font-size: 12.5px; color: #1e293b; margin-bottom: 8px; }
+.dept-pills-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.dept-chip {
+  font-size: 11px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  padding: 4px 10px;
+  border-radius: 99px;
+  color: #0f172a;
+}
+
+.dept-chip b { color: #0a3560; }
+
+/* Panels, Ribbons & Grids */
+.grid-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 1.12fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.right-column-stack { display: grid; gap: 18px; }
+
+.panel {
+  background: #ffffff;
+  border: 1px solid #dbe3ee;
+  border-radius: 10px;
+  padding: 20px 22px;
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+
+.panel-ribbon-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 10px;
+}
+
+.step-badge {
+  background: #0a3560;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+}
+
+.panel h3 { margin: 0; font-size: 17px; color: #0a3560; font-weight: 800; }
+.sub { font-size: 12px; color: var(--muted); margin: 4px 0 12px; line-height: 1.5; }
+.field { margin-bottom: 13px; }
+.field label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 5px; color: #1e293b; }
+
+.field input, .field select, .field textarea, .control {
+  width: 100%;
+  border: 1.5px solid #cbd5e1;
+  background: #f8fafc;
+  border-radius: 7px;
+  padding: 10px 12px;
+  color: var(--text);
+  font-size: 13px;
+  outline: none;
+}
+
+.field input:focus, .field select:focus, .field textarea:focus, .control:focus {
+  background: #fff;
+  border-color: #0a3560;
+  box-shadow: 0 0 0 3px rgba(10, 53, 96, 0.12);
+}
+
+.field textarea { resize: vertical; min-height: 82px; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* Buttons */
+.btn {
+  padding: 10px 16px;
+  border-radius: 7px;
+  font-weight: 700;
+  font-size: 13px;
+  transition: all 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #0a3560 0%, #099668 100%);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(9, 150, 104, 0.25);
+}
+
+.btn-primary:hover { transform: translateY(-1px); opacity: 0.96; }
+.btn-light { background: #fff; color: #1e293b; border: 1px solid #cbd5e1; }
+.btn-danger { background: #ffe4e6; color: #be123c; border: 1px solid #fda4af; }
+.btn-small { padding: 6px 11px; font-size: 12px; }
+.btn-lg { padding: 13px 18px; font-size: 14px; }
+.full { width: 100%; }
+
+.btn-mini {
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  background: #f1f5f9;
+  color: #0a3560;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+}
+
+.btn-mini.active, .btn-mini:hover {
+  background: #0a3560;
+  color: #fff;
+  border-color: #0a3560;
+}
+
+/* Live WebRTC Camera & Upload Box */
+.upload {
+  border: 2px dashed #94a3b8;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  background: #f8fafc;
+  cursor: pointer;
+  display: block;
+}
+
+.upload:hover { border-color: #099668; background: #f0fdf4; }
+.upload-icon { font-size: 22px; }
+.upload strong { display: block; font-size: 12.5px; margin: 4px 0; color: #0f172a; }
+.upload span { font-size: 11px; color: var(--muted); }
+.upload + input[type="file"] { display: none; }
+
+.camera-box {
+  border: 2px solid #0a3560;
+  border-radius: 8px;
+  padding: 10px;
+  background: #0f172a;
+  color: #fff;
+  text-align: center;
+}
+
+.camera-video {
+  width: 100%;
+  max-height: 220px;
+  border-radius: 6px;
+  background: #000;
+  object-fit: cover;
+}
+
+.camera-controls {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.camera-hint { display: block; margin-top: 6px; font-size: 11px; color: #94a3b8; }
+.evidence-preview-wrap { text-align: center; margin-top: 10px; }
+.preview { max-width: 100%; max-height: 170px; object-fit: cover; border-radius: 8px; border: 2px solid #099668; }
+
+/* Enhanced GIS Map & Toolbar */
+.map-header-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+.map-toolbar { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+.map-search-wrap { display: flex; gap: 6px; flex: 1; min-width: 200px; }
+.map-search-wrap input { padding: 6px 10px; font-size: 12px; }
+.map-btn-group { display: flex; gap: 5px; flex-wrap: wrap; }
+
+.map-box {
+  height: 255px;
+  width: 100%;
+  border-radius: 8px;
+  border: 2px solid #94a3b8;
+  background: #e2e8f0;
+  z-index: 1;
+}
+
+.map-box-large { height: 350px; }
+.coord-bar { margin-top: 8px; display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 11px; color: var(--muted); }
+.coord-inputs { display: flex; gap: 6px; }
+.coord-inputs input { width: 112px; padding: 5px 8px; font-size: 11px; font-family: monospace; font-weight: 700; background: #f1f5f9; }
+
+/* Live Python AI Triage & Routing Console */
+.ai-console-panel {
+  border-top: 4px solid #099668;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.ai-console-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.ai-live-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: #099668;
+  background: #d1fae5;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+.ai-meter-row { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; margin-bottom: 6px; }
+.ai-progress-track { height: 9px; background: #e2e8f0; border-radius: 99px; overflow: hidden; margin-bottom: 12px; }
+.ai-progress-fill { height: 100%; background: linear-gradient(90deg, #099668 0%, #f59e0b 60%, #dc2626 100%); transition: width 0.35s ease; }
+
+.ai-routing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+
+.ai-route-card {
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.ai-route-card small { display: block; font-size: 9.5px; font-weight: 800; color: #64748b; letter-spacing: 0.6px; }
+.ai-route-card b { display: block; font-size: 12.5px; color: #0a3560; margin: 3px 0; }
+.dept-code-pill, .sla-pill { display: inline-block; font-size: 10.5px; font-weight: 700; padding: 2px 7px; border-radius: 4px; background: #eff6ff; color: #1d4ed8; }
+.ai-reason-text { font-size: 12px; color: #334155; line-height: 1.5; margin: 6px 0 0; }
+
+/* Departmental Admin Switcher Grid */
+.dept-switcher-head { font-size: 12.5px; color: #0a3560; margin-bottom: 8px; }
+
+.dept-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.dept-card {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px 11px;
+  text-align: left;
+  transition: all 0.16s ease;
+}
+
+.dept-card:hover { border-color: #0a3560; transform: translateY(-1px); }
+
+.dept-card.active {
+  background: #0a3560;
+  color: #ffffff;
+  border-color: #0a3560;
+  box-shadow: 0 6px 14px rgba(10, 53, 96, 0.2);
+}
+
+.dept-card-code {
+  display: inline-block;
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #e2e8f0;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.dept-card.active .dept-card-code { background: var(--saffron); color: #fff; }
+.dept-card b { display: block; font-size: 12px; margin-bottom: 2px; }
+.dept-card small { display: block; font-size: 10.5px; opacity: 0.82; }
+
+/* Stats, Badges, Cards & Tables */
+.section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 15px; margin: 14px 0 16px; flex-wrap: wrap; }
+.section-head h2 { font-size: 22px; color: #0a3560; margin: 0; font-weight: 800; }
+.section-head p { font-size: 13px; color: var(--muted); margin: 4px 0 0; }
+
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px; }
+.stat { background: #fff; border: 1px solid #dbe3ee; border-top: 4px solid #0a3560; border-radius: 10px; padding: 15px 18px; box-shadow: var(--shadow); }
+.stat-top { display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: 12px; font-weight: 700; }
+.stat-icon { width: 34px; height: 34px; display: grid; place-items: center; background: #eff6ff; color: #1d4ed8; border-radius: 8px; font-size: 16px; }
+.stat-amber { background: #fef3c7; color: #b45309; }
+.stat-blue  { background: #dbeafe; color: #1d4ed8; }
+.stat-green { background: #d1fae5; color: #047857; }
+.stat-red   { background: #ffe4e6; color: #be123c; }
+.stat-num { font-size: 29px; font-weight: 800; margin: 8px 0 2px; color: #0f172a; }
+.stat-note { font-size: 11px; color: var(--muted); }
+
+.form-note { font-size: 11.5px; color: var(--muted); line-height: 1.5; margin: 10px 0 14px; background: #f1f5f9; padding: 9px 12px; border-radius: 6px; border-left: 4px solid #0a3560; }
+.success { display: none; margin-top: 14px; border-radius: 8px; background: #ecfdf5; border: 1px solid #6ee7b7; color: #065f46; padding: 14px; font-size: 12.5px; line-height: 1.6; }
+
+.toolbar, .admin-tools { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+.toolbar input, .admin-tools input { flex: 1.4; min-width: 160px; }
+.toolbar select, .admin-tools select { flex: 1; min-width: 130px; }
+.complaint-list { display: grid; gap: 11px; }
+
+.issue { border: 1px solid #dbe3ee; border-radius: 10px; padding: 15px; display: grid; grid-template-columns: 66px minmax(0, 1fr); gap: 14px; background: #fff; }
+.issue-img { width: 66px; height: 66px; object-fit: cover; border-radius: 8px; background: #eff6ff; display: grid; place-items: center; font-size: 25px; border: 1px solid #dbeafe; }
+.issue-title-row { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+.issue h4 { font-size: 14.5px; margin: 0 0 3px; color: #0a3560; font-weight: 700; }
+.issue-id { font-size: 11px; color: var(--muted); font-weight: 700; font-family: monospace; }
+.issue-meta { font-size: 11.5px; color: var(--muted); display: flex; gap: 10px; flex-wrap: wrap; margin: 6px 0; }
+.badge-row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-top: 5px; }
+
+.badge { font-size: 10px; font-weight: 800; border-radius: 5px; padding: 4px 8px; text-transform: uppercase; background: #f1f5f9; color: #334155; }
+.badge-dept { background: #e0f2fe; color: #075985; border: 1px solid #bae6fd; }
+.status-Submitted    { background: #dbeafe; color: #1e40af; }
+.status-Under-Review { background: #f3e8ff; color: #6b21a8; }
+.status-In-Progress  { background: #fef3c7; color: #92400e; }
+.status-Resolved     { background: #dcfce7; color: #166534; }
+.status-Rejected     { background: #fee2e2; color: #991b1b; }
+.priority-Critical   { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+.priority-High       { background: #ffedd5; color: #9a3412; }
+.priority-Medium     { background: #fef9c3; color: #854d0e; }
+.priority-Low        { background: #f1f5f9; color: #475569; }
+
+.ai-box { margin-top: 8px; background: #f8fafc; border: 1px solid #dbeafe; border-left: 4px solid #099668; border-radius: 6px; padding: 7px 10px; font-size: 11.5px; color: #1e293b; }
+.dup-alert { margin-top: 6px; background: #fffbeb; border: 1px solid #fde68a; border-left: 4px solid #d97706; border-radius: 6px; padding: 6px 10px; font-size: 11.5px; color: #92400e; }
+.issue-actions { display: flex; gap: 7px; flex-wrap: wrap; align-items: center; margin-top: 10px; }
+.issue-actions select { border: 1px solid #cbd5e1; border-radius: 5px; padding: 5px 8px; font-size: 11.5px; background: #fff; font-weight: 600; }
+.issue-actions button { font-size: 11.5px; padding: 5px 10px; border-radius: 5px; background: #eff6ff; color: #0a3560; font-weight: 700; border: 1px solid #bfdbfe; }
+.upvote-btn { background: #ecfdf5 !important; color: #047857 !important; border-color: #a7f3d0 !important; }
+
+.map-legend { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-size: 11.5px; font-weight: 700; }
+.legend-item { display: inline-flex; align-items: center; gap: 5px; }
+.dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+.dot-critical { background: #dc2626; }
+.dot-high     { background: #ea580c; }
+.dot-medium   { background: #2563eb; }
+.dot-resolved { background: #16a34a; }
+
+.admin-head-actions { display: flex; gap: 8px; align-items: center; }
+.admin-auth-panel { margin-bottom: 18px; background: #f8fafc; border-left: 5px solid #0a3560; }
+.admin-auth-grid { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.admin-login-form { display: flex; gap: 8px; flex-wrap: wrap; }
+.admin-login-form input { width: 160px; }
+.demo-cred { display: inline-block; margin-top: 4px; color: #0a3560; background: #dbeafe; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+.admin-session-bar { margin-bottom: 18px; padding: 12px 18px; display: flex; justify-content: space-between; align-items: center; background: #ecfdf5; border: 1px solid #6ee7b7; }
+.session-info { display: flex; align-items: center; gap: 10px; }
+.session-avatar { font-size: 24px; }
+.session-info b { display: block; font-size: 13.5px; color: #065f46; }
+.session-info small { color: #047857; font-size: 11.5px; }
+
+.track-panel { max-width: 860px; margin: 0 auto; }
+.track-search-bar { display: flex; gap: 10px; }
+.quick-ids { margin-top: 10px; display: flex; gap: 7px; align-items: center; flex-wrap: wrap; font-size: 11.5px; color: var(--muted); }
+.chip { background: #f1f5f9; color: #0a3560; border: 1px solid #cbd5e1; border-radius: 99px; padding: 4px 10px; font-size: 11px; font-family: monospace; font-weight: 700; }
+.stepper { display: flex; justify-content: space-between; margin: 16px 0; gap: 6px; }
+.step { flex: 1; text-align: center; padding: 9px 6px; border-radius: 6px; background: #f1f5f9; color: #64748b; font-size: 11.5px; font-weight: 700; border: 1px solid #e2e8f0; }
+.step.done { background: #dcfce7; color: #166534; border-color: #86efac; }
+.step.current { background: #0a3560; color: #fff; border-color: #0a3560; }
+.timeline { list-style: none; padding: 0; margin: 12px 0 0 8px; border-left: 2px solid #94a3b8; }
+.timeline li { position: relative; padding: 0 0 12px 16px; font-size: 12.5px; line-height: 1.5; }
+.timeline li::before { content: ""; position: absolute; left: -6px; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: #0a3560; }
+
+/* Government Tables & Footer */
+.gov-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 8px; }
+.gov-table th, .gov-table td { border: 1px solid #cbd5e1; padding: 9px 10px; text-align: left; }
+.gov-table th { background: #0a3560; color: #fff; font-weight: 700; }
+.gov-table tr:nth-child(even) { background: #f8fafc; }
+
+.gov-footer {
+  margin-top: 40px;
+  background: #07192d;
+  color: #cbd5e1;
+  border-top: 4px solid var(--saffron);
+  border-radius: 10px;
+  padding: 24px 28px 16px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.gov-footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; padding-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
+.gov-footer h4 { color: #fde68a; margin: 0 0 8px; font-size: 13.5px; }
+.gov-footer ul { margin: 0; padding-left: 16px; }
+.gov-footer-bottom { display: flex; justify-content: space-between; padding-top: 12px; font-size: 11px; color: #94a3b8; flex-wrap: wrap; gap: 8px; }
+
+.modal-backdrop { position: fixed; inset: 0; background: rgba(10, 37, 64, 0.62); backdrop-filter: blur(3px); z-index: 1000; display: grid; place-items: center; padding: 16px; }
+.modal-card { background: #fff; border-radius: 12px; max-width: 740px; width: 100%; max-height: 88vh; overflow-y: auto; box-shadow: var(--shadow-lg); }
+.modal-header { padding: 16px 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: flex-start; position: sticky; top: 0; background: #fff; }
+.modal-header h3 { margin: 4px 0 0; font-size: 18px; color: #0a3560; }
+.modal-close { background: #f1f5f9; width: 32px; height: 32px; border-radius: 50%; font-size: 14px; }
+.modal-body { padding: 18px 20px 22px; font-size: 13px; line-height: 1.6; }
+.photo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 12px 0; }
+.photo-card { border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px; background: #f8fafc; }
+.photo-card img { width: 100%; height: 170px; object-fit: cover; border-radius: 6px; }
+.empty { text-align: center; padding: 28px 10px; color: var(--muted); font-size: 13px; }
+.notice { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 10px 13px; color: #1e293b; font-size: 12px; margin-top: 10px; }
+.toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #0a2540; color: #fff; padding: 11px 18px; border-radius: 8px; box-shadow: var(--shadow-lg); font-size: 13px; font-weight: 600; z-index: 1200; display: none; }
+.hidden { display: none !important; }
+
+@media (max-width: 1024px) {
+  .official-masthead { grid-template-columns: 1fr; }
+  .dept-grid { grid-template-columns: repeat(3, 1fr); }
+  .grid-main { grid-template-columns: 1fr; }
+  .gov-footer-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .two, .ai-routing-grid { grid-template-columns: 1fr; }
+  .dept-grid, .stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+
+/* ==========================================================================
+   CivicFix v2.0 Competition Edition — New Styles for Disaster SOS, Offline
+   Outbox, SMS/IVR Telecom Gateway, Surge Simulator & Citizen Feedback Loop
+   ========================================================================== */
+
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.sos-toggle-btn {
+  background: rgba(220, 38, 38, 0.25) !important;
+  border-color: #f87171 !important;
+  color: #fecaca !important;
+}
+
+.sos-toggle-btn.active {
+  background: #dc2626 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 12px rgba(220, 38, 38, 0.65);
+}
+
+.offline-sim-btn.offline-active {
+  background: #d97706 !important;
+  border-color: #fde68a !important;
+  color: #ffffff !important;
+}
+
+.disaster-sos-banner {
+  background: linear-gradient(90deg, #991b1b 0%, #dc2626 50%, #b91c1c 100%);
+  color: #ffffff;
+  padding: 10px clamp(14px, 3.5vw, 48px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  border-bottom: 2px solid #fde047;
+}
+
+.disaster-sos-banner strong {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 0.4px;
+  color: #fef08a;
+}
+
+.offline-outbox-banner {
+  background: linear-gradient(90deg, #78350f 0%, #b45309 100%);
+  color: #ffffff;
+  padding: 10px clamp(14px, 3.5vw, 48px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  border-bottom: 2px solid #fcd34d;
+}
+
+.offline-outbox-banner strong {
+  display: block;
+  font-size: 13px;
+  color: #fde68a;
+}
+
+.dtmf-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.dtmf-btn {
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 9px 10px;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+
+.dtmf-btn b {
+  display: block;
+  font-size: 13px;
+  color: #0a3560;
+}
+
+.dtmf-btn small {
+  font-size: 10.5px;
+  color: #475569;
+}
+
+.dtmf-btn.active, .dtmf-btn:hover {
+  background: #0a3560;
+  border-color: #0a3560;
+  color: #ffffff;
+}
+
+.dtmf-btn.active b, .dtmf-btn:hover b,
+.dtmf-btn.active small, .dtmf-btn:hover small {
+  color: #ffffff;
+}
+
+.telecom-terminal {
+  margin-top: 14px;
+  background: #07192d;
+  color: #a7f3d0;
+  border: 1.5px solid #099668;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.surge-console-panel {
+  border-left: 5px solid #d97706;
+  background: linear-gradient(90deg, #fffbeb 0%, #ffffff 100%);
+}
+
+.badge-channel {
+  background: #f3e8ff;
+  color: #6b21a8;
+  border: 1px solid #d8b4fe;
+}
+
+.badge-cluster {
+  background: #ffedd5;
+  color: #9a3412;
+  border: 1px solid #fdba74;
+}
+
+.badge-rating {
+  background: #fef9c3;
+  color: #854d0e;
+  border: 1px solid #fde047;
+}
+
+.notif-log-card {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-left: 4px solid #1d4ed8;
+  border-radius: 7px;
+  padding: 10px 12px;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.feedback-box {
+  background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
+  border: 2px solid #10b981;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-top: 14px;
+}
+
+.star-picker {
+  display: inline-flex;
+  gap: 6px;
+  margin: 6px 0;
+}
+
+.star-btn {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #64748b;
+}
+
+.star-btn.active {
+  background: #fef3c7;
+  border-color: #f59e0b;
+  color: #b45309;
+}
+
+@media (max-width: 768px) {
+  .three-col, .dtmf-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==========================================================================
+   CivicFix v3.0 — Smart-City GIS, AI Vision & WhatsApp Bot Enhancements
+   ========================================================================== */
+.map-box {
+  position: relative;
+  width: 100%;
+  height: 390px !important;
+  min-height: 390px !important;
+  border-radius: 12px;
+  border: 2px solid #cbd5e1;
+  background: #e8efe5;
+  overflow: hidden;
+  z-index: 1;
+}
+.map-box-large {
+  height: 460px !important;
+  min-height: 460px !important;
+}
+.leaflet-container {
+  width: 100% !important;
+  height: 100% !important;
+  font-family: inherit;
+  background: #eef2eb !important;
+}
+.gis-overlay-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin: 8px 0 10px;
+  padding: 8px 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+.gis-overlay-bar small {
+  font-weight: 700;
+  color: #334155;
+  margin-right: 4px;
+  font-size: 11.5px;
+}
+.btn-mini.active {
+  background: #0a3560 !important;
+  color: #ffffff !important;
+  border-color: #0a3560 !important;
+}
+.ai-vision-card {
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f0fdf4 0%, #eff6ff 100%);
+  border: 1px solid #86efac;
+  font-size: 12.5px;
+  color: #0f172a;
+}
+.wa-chat-box {
+  background: #efeae2;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 12px;
+  max-height: 250px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px 0;
+}
+.wa-msg {
+  max-width: 86%;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+.wa-msg.bot {
+  align-self: flex-start;
+  background: #ffffff;
+  border-top-left-radius: 2px;
+  color: #0f172a;
+}
+.wa-msg.user {
+  align-self: flex-end;
+  background: #d9fdd3;
+  border-top-right-radius: 2px;
+  color: #0f172a;
+}
+.upvote-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.upvote-btn:hover {
+  background: #dbeafe;
+  transform: translateY(-1px);
+}
+.sla-stage-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+}
+.sla-stage-badge.breach {
+  background: #fef2f2;
+  color: #dc2626;
+  border-color: #fecaca;
+}
+.qr-receipt-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  background: #f8fafc;
+  border: 1px dashed #94a3b8;
+  border-radius: 10px;
+  margin-top: 12px;
+}
+
+.leaflet-tile.radar-dark-tiles, .radar-dark-tiles { filter: invert(92%) hue-rotate(185deg) brightness(93%) contrast(96%) !important; }
